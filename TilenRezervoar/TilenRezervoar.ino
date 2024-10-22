@@ -2,7 +2,6 @@
 #include <LoRa.h>
 #include <Wire.h>
 #include <SSD1306Wire.h>
-#define TEMPLATE_PLACEHOLDER '~'
 #include <WiFi.h>
 #include <AsyncTCP.h>
 #include <ESPAsyncWebServer.h>
@@ -36,6 +35,7 @@ AsyncWebServer server(80);
 SSD1306Wire display(0x3C, SDA, SCL);
 
 char w_lvl;
+String voltag = "0";
 
 bool old_wifi_state = false;
 String OldData;
@@ -83,6 +83,8 @@ String processor(const String& var){
 		  default:
 			return "0%";
 		}
+	if(var == "TEMPLATE_PLACEHOLDERWATER_VOLTAGE"){
+		return voltage;
 	}
 
   return String();
@@ -106,7 +108,7 @@ String LoRa_parser(){
         w_lvl += (int) waterLevel[i] - 48;
       }
       Serial.println(w_lvl,HEX);
-      String voltage = packet.substring(5);
+      voltage = packet.substring(5);
 
     
 
