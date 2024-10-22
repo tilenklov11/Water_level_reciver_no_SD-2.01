@@ -41,7 +41,11 @@ bool old_wifi_state = false;
 String OldData;
 
 String processor(const String& var){
-  Serial.println (var);
+  Serial.println(var);
+	
+	if(var == "TEMPLATE_PLACEHOLDERWATER_VOLTAGE"){
+		return voltage;
+	}
 	if(var == "TEMPLATE_PLACEHOLDERWATER_25"){
 		if(w_lvl < 1){
 			return "background-color:#bbb;";
@@ -83,9 +87,8 @@ String processor(const String& var){
 		  default:
 			return "0%";
 		}
-	if(var == "TEMPLATE_PLACEHOLDERWATER_VOLTAGE"){
-		return voltage;
 	}
+	
 
   return String();
 }
@@ -111,7 +114,7 @@ String LoRa_parser(){
       voltage = packet.substring(5);
 
     
-
+    Serial.println("Water level: " + getWaterLevelString(w_lvl) + "\tVoltage: " + voltage);
     return "Water level: " + getWaterLevelString(w_lvl) + "\nVoltage: " + voltage;
     }
     else{
