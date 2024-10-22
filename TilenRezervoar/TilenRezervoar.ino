@@ -35,7 +35,7 @@ AsyncWebServer server(80);
 SSD1306Wire display(0x3C, SDA, SCL);
 
 char w_lvl;
-String voltag = "0";
+String voltage = "0";
 
 bool old_wifi_state = false;
 String OldData;
