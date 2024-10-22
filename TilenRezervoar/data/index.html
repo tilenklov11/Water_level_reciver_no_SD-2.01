@@ -3,7 +3,7 @@
 <head>
 <meta charset="ANSI">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="/picnic.min.css">
+<link rel="stylesheet" href="picnic.min.css">
  
 </head>
 <body>
@@ -14,7 +14,10 @@
     <div>
         <article class="card">
             <header>
-              <h3 class="full" style="color:#000;">Rezervoar</h3>
+				<div class="flex">
+					<h3 style="color:#000;">Rezervoar</h3>
+					<h3 style="margin-left: auto; margin-right:0px; text-align:right; color:#000;">Napetost: %TEMPLATE_PLACEHOLDERWATER_VOLTAGE%V</h3>
+				</div>
             </header>
             <section style="background-color:#aaa">
                 <h2 style="padding:.2em"><span style=" %TEMPLATE_PLACEHOLDERWATER_100% " class="flex label">100</span></h2>
